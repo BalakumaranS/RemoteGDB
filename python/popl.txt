@@ -1,0 +1,34 @@
+Received Messages
+
+Message Count
+
+CD5 28
+
+MM5 2B
+
+SNS 1
+
+DCM 2B
+
+VCM 2B
+
+STT EB
+
+Cnnﬁg 555
+
+EAS D
+
+EMM 0
+
+CAT NA
+
+CVT D
+
+ECM 67
+
+GBAM 70
+
+Last Addresahle Timestamp 00:00:00
+
+Last to return, 7 to exit
+

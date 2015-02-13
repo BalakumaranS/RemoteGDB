@@ -1,0 +1,202 @@
+import telnetlib,time
+import ircodes
+
+__author__ = 'gmuralit'
+
+
+### Box types ###
+EXPLORER = 0
+OCAP = 1
+IPTV = 2
+DTA_XMP = 3
+MOTOROLA = 4
+
+
+
+### IrTekClient class ###
+
+class IrTekClient():
+    """
+    Base class of IrTekClient
+    """
+
+    def __init__(self, host, port, rtype, burst):
+        self.host = host
+        self.port = port
+        self.connect_state = False
+        self.connect_instance = None
+        self.burst = burst
+        if rtype == EXPLORER:
+            self.ir_codes = ircodes.IRCodes56()
+        elif rtype == DTA_XMP:
+            self.ir_codes = ircodes.IRCodesDTA()
+        elif rtype == MOTOROLA:
+            self.ir_codes = ircodes.IRCodesMotorola()
+
+    def connect(self):
+        """
+        Connect to the IrTek host:port
+        """
+        if not self.connect_state:
+            self.connect_instance = telnetlib.Telnet(self.host,self.port)
+            self.connect_state = True
+            print "Connected to the device"
+        else:
+            print "Already connected to the device"
+
+    def disconnect(self):
+        """
+        Disconnect from IrTek host:port
+        """
+        if self.connect_state:
+            self.connect_instance.close()
+            self.connect_state = False
+            self.connect_instance = None
+            print "Disconnect from the device"
+        else:
+            print "Already disconnected from the device"
+
+    def send_cmd(self,data):
+        """
+        Send command to the IrTek host:port device
+        """
+        print 'Writing to device - %s'%data
+        self.connect_instance.write(data)
+        #time.sleep(0.8)
+
+    def cmd_wrap(self,cmd):
+        """
+        Wrap the command with appropriate details to be sent to the IrTek
+
+        @Params:
+        cmd - IrTek command for a specific operation
+
+        @Return:
+        cmd - cmd wrapped with appropriate headers and terminators
+        """
+        ir_codes = self.ir_codes
+        protocol = ir_codes.protocol
+        data_size = ir_codes.data_size
+        mask = 0xffff
+        option = ''
+        if self.burst <> 3:
+            option += '4%04x'%(self.burst)
+        cmd = 't%04x%s%s%s%s0'%(mask,protocol,data_size,cmd,option)
+        return cmd
+
+### PyRemote class ###
+
+class PyRemote(IrTekClient):
+    """
+    PyRemote class inheriting IrTekClient class
+    """
+
+    def __init__(self, host, port, rtype, burst=None):
+        IrTekClient.__init__(self, host, port, rtype, burst)
+        self.connect()
+
+    def __del__(self):
+        self.disconnect()
+
+    def channel_up(self):
+        """
+        Send Channel Up code to IrTek host:port
+        """
+        IrTekClient.send_cmd(self,IrTekClient.cmd_wrap(self,self.ir_codes.channel_up))
+
+    def channel_down(self):
+        """
+        Send Channel Down code to IrTek host:port
+        """
+        IrTekClient.send_cmd(self,IrTekClient.cmd_wrap(self,self.ir_codes.channel_down))
+
+    def changeChannel(self, channel, delay = 0.5, digits = 4):
+        #build the chr string
+        cStr = '%0'
+        cStr+= str(digits)
+        cStr += 'd'
+        chStr = cStr % channel
+
+        index = 0
+        for c in chStr:
+            #st = time.time()
+            self.numberMap[c]()
+            #et = time.time()
+            if index < len(chStr) - 1:
+                #print 'Delaying %.1f, command time = %.3f' % (delay, et - st)
+                time.sleep(delay)
+            index += 1
+	
+	def send_digit(self,digit):
+		"""
+		Send a key code to the IrTek host:port
+		
+		@Params:
+		digit - number to be sent, integer
+		"""
+		if digit == 0:
+			key = self.ir_codes.key0
+		elif digit == 1:
+			key = self.ir_codes.key1
+		elif digit == 2:
+			key = self.ir_codes.key2
+		elif digit == 3:
+			key = self.ir_codes.key3
+		elif digit == 4:
+			key = self.ir_codes.key4
+		elif digit == 5:
+			key = self.ir_codes.key5
+		elif digit == 6:
+			key = self.ir_codes.key6
+		elif digit == 7:
+			key = self.ir_codes.key7
+		elif digit == 8:
+			key = self.ir_bcodes.key8
+		elif digit == 9:
+			key = self.ir_codes.key9
+		IrTekClient.send_cmd(self,IrTekClient.cmd_wrap(self,key))
+		
+    def enter(self):
+        """
+        Press enter key
+        """
+        IrTekClient.send_cmd(self,IrTekClient.cmd_wrap(self,self.ir_codes.enter))
+
+    def last(self):
+        """
+        Press last key
+        """
+        IrTekClient.send_cmd(self,IrTekClient.cmd_wrap(self,self.ir_codes.last))
+
+    def diag_page(self):
+        """
+        Invoke diagnostics page (Not working)
+        """
+        key = self.ir_codes.key7
+        for x in range(0,1):
+            print 'send'
+            IrTekClient.send_cmd(self,IrTekClient.cmd_wrap(self,self.ir_codes.exit))
+            time.sleep(0.5)
+            IrTekClient.send_cmd(self,IrTekClient.cmd_wrap(self,self.ir_codes.select))
+            time.sleep(0.5)
+            IrTekClient.send_cmd(self,IrTekClient.cmd_wrap(self,self.ir_codes.info))
+            time.sleep(0.5)
+
+
+if __name__ == '__main__':
+    self.numberMap = {'0':self.key0,
+                          '1':self.key1,
+                          '2':self.key2,
+                          '3':self.key3,
+                          '4':self.key4,
+                          '5':self.key5,
+                          '6':self.key6,
+                          '7':self.key7,
+                          '8':self.key8,
+                          '9':self.key9}
+    p = PyRemote('10.78.203.158', 4002, 3, 2)
+    
+   # p = PyRemote('172.18.28.171', 4002, 3, 2)
+    p.changeChannel(102)
+    #p.channel_down()
+  # p.diag_page()

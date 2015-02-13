@@ -1,0 +1,11 @@
+M50 Info (2 of 2)
+
+Default Activation Support Message
+
+Your Digital Adapter (DTA) needs to be Activated.
+Ensure all DTAs are connected, then call your service
+provider and follow the instructions for Activation.
+Serial Number: cthcqfdsr
+
+MAC Address: OX1 ZEIQOSCIZE1 1
+

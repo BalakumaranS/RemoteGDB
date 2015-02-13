@@ -1,0 +1,42 @@
+Received Messages
+
+Message
+CD5
+MM5
+SNS
+DCM
+VCM
+STT
+Cnnﬁg
+EAS
+EMM
+CAT
+CVT
+ECM
+GBAM
+
+Count
+2B
+2B
+
+1
+
+2B
+2B
+5 B
+5 5 5
+D
+
+0
+NA
+0
+
+67
+70
+
+Last Addresahle Timestamp
+
+Last to return, 7 to exit
+
+00:00:00
+

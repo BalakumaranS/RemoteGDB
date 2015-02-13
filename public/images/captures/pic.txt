@@ -1,0 +1,11 @@
+Code Download
+Download Status Not Loading
+Download Failure Count 0
+Validation Failure Count 0
+Total Data Blocks 0
+Num Blocks Loaded 0
+Group ID OX0
+Last Image FileName HDA2—S-D-01 77_1 70_r5603B_F.p.pkg5img
+Last C\IT Time 18 AUG 2014 02:17:23
+Last to return, 7 to exit
+

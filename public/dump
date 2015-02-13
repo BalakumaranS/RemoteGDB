@@ -1,0 +1,17 @@
+<div id="holder_notifications"></div>
+		<header>
+			<!--<div id="holder_logo" class="leftalign"><img src="images/cisco.png" width="90%" height="90%" alt="Cisco Logo" /></div>-->
+			<div id="holder_title" class="leftalign"><a href="/" class="header_txt">IVAA</a></div>
+		</header>
+		<div id="container">
+			<div id="holder_hosts">
+				<div id="holder_hosts_select" class="leftalign"></div>
+				<div id="holder_register" class="leftalign">
+					<form action method="POST" id="register_device">
+						<div id="holder_devicename"><input type="text" id="txt_devicename" /></div>
+						<div id="holder_btnregister"><button class="button primary button-block" type="submit">Register</button></div>
+					<form>
+				</div>
+			</div>
+		</div>
+		<footer></footer>

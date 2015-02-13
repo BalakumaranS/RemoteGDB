@@ -1,0 +1,8 @@
+Default Service Interruption Message
+
+We've detected an interruption in your service.
+
+Please check the connections and if the problem is not
+resolved please contact your service provider to restore
+service. We're son'y for the inconvenience.
+

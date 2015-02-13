@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1">
+		<title>EEVAA Cloud | Automate</title>
+		<link rel="stylesheet" href="dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="main.css" />
+	</head>
+<body>
+	<div class="navbar navbar-inverse" role="navigation">
+		<div class="container">
+			<div class="navbar-header"><a class="navbar-brand" href="/">EEVAA Cloud</a></div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/">Home</a><li>
+					<li class="active"><a href="/automate">Automate</a><li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2 col-sm-2 col-lg-2 sidebar">
+				<div class="row">
+					<ul class="nav nav-sidebar">
+						<li><select id="menu_devices" class="form-control"><option value="-1">-- Select Cloud --</option><option value="10.143.32.102">Localhost</option></select></li>
+						<li><h2>Tools</h2></li>
+						<li><a href id="pyvideo">PyVideo</a></li>
+						<li><a href id="pydta">PyDTA</a></li>
+						<li><a href id="pyhertz">PyHertz</a></li>
+						<li><a href id="pytv">PyTv</a></li>
+					</ul>
+				</div>
+				<div class="row" id="menu_pyvideo">
+					<form action method="POST" name="menu_pyvideo_form" id="menu_pyvideo_form" role="form">
+					<ul class="nav nav-sidebar">
+						<li><hr/></li>
+						<li><h3>PyVideo Settings</h3></li>
+						<li><div class="form-group"><label for="menu_pyvideo_form_testname">Test name</label><input type="text" id="menu_pyvideo_form_testname" class="form-control" value="" placeholder="Test name"/></div></li>
+						<li><div class="form-group"><label for="menu_pyvideo_form_modulename">Module</label><select id="menu_pyvideo_form_modulename" class="form-control"><option value="-1">-- Select Module --</option><option value="testVideoPresence">Video Presence validation</option><option value="testImageSimilarity">Not Authorized validation</option><option value="testImageBrick">Brick Mode validation</option></select></div></li>
+						<li><div class="form-group"><label for="menu_pyvideo_form_channelnumber">Channel number</label><input type="text" id="menu_pyvideo_form_channelnumber" class="form-control" value="" placeholder="Channel number"/></div></li>
+						<li><button type="submit" class="btn btn-success form-control">Start Test</button></li>
+					</ul>
+					</form>
+				</div>
+				<div class="row" id="menu_pydta">
+					<form action method="POST" name="menu_pydta_form" id="menu_pydta_form" role="form">
+					<ul class="nav nav-sidebar">
+						<li><hr/></li>
+						<li><h3>PyDTA Settings</h3></li>
+						<li><div class="form-group"><label for="menu_pydta_form_testname">Test name</label><input type="text" id="menu_pydta_form_testname" class="form-control" value="" placeholder="Test name"/></div></li>
+						<li><div class="form-group"><label for="menu_pydta_form_modulename">Module</label><select id="menu_pydta_form_modulename" class="form-control"><option value="-1">-- Select Module --</option><option value="TC_VideoPresence">Video Presence validation</option><option value="TC_Messages_Clear">Clear Received Messages count</option><option value="TC_EMM_Verify">EMM Count validation</option><option value="TC_Code_Verify">Image Verify</option><option value="TC_Barker_Verify">Not Authorized Barker validation</option><option value="TC_ECM_Verify">ECM Count Validation</option></select></div></li>
+						<li><div class="form-group"><label for="menu_pydta_form_channelnumber">Channel number</label><input type="text" id="menu_pydta_form_channelnumber" class="form-control" value="" placeholder="Channel number"/></div></li>
+						<li><div class="form-group"><label for="menu_pydta_form_dtachannelnumber">DTA Channel number</label><input type="text" id="menu_pydta_form_dtachannelnumber" class="form-control" value="" placeholder="DTA Channel number"/></div></li>
+						<li><button type="submit" class="btn btn-success form-control">Start Test</button></li>
+					</ul>
+					</form>
+				</div>
+				<div class="row" id="menu_pyhertz">
+					<form action method="POST" name="menu_pyhertz_form" id="menu_pyhertz_form" role="form">
+					<ul class="nav nav-sidebar">
+						<li><hr/></li>
+						<li><h3>PyHertz Settings</h3></li>
+						<li><div class="form-group"><label for="menu_pyhertz_form_testname">Test name</label><input type="text" id="menu_pyhertz_form_testname" class="form-control" value="" placeholder="Test name"/></div></li>
+						<li><div class="form-group"><label for="menu_pyhertz_form_modulename">Module</label><select id="menu_pyhertz_form_modulename" class="form-control"><option value="-1">-- Select Module --</option><option value="testRecord">Audio Presence validation</option></select></div></li>
+						<li><div class="form-group"><label for="menu_pyhertz_form_recordingtime">Recording time</label><input type="text" id="menu_pyhertz_form_recordingtime" class="form-control" value="" placeholder="Recording time"/></div></li>
+						<li><button type="submit" class="btn btn-success form-control">Start Test</button></li>
+					</ul>
+					</form>
+				</div>
+				<div class="row" id="menu_pytv">
+					<form action method="POST" name="menu_pytv_form" id="menu_pytv_form" role="form">
+					<ul class="nav nav-sidebar">
+						<li><hr/></li>
+						<li><h3>PyTv Settings</h3></li>
+						<li><div class="form-group"><label for="menu_pytv_form_testname">Test name</label><input type="text" id="menu_pytv_form_testname" class="form-control" value="" placeholder="Test name"/></div></li>
+						<li><div class="form-group"><label for="menu_pytv_form_modulename">Module</label><select id="menu_pytv_form_modulename" class="form-control"><option value="-1">-- Select Module --</option><option value="testVideoCapture">TV Capture</option></select></div></li>
+						<li><div class="form-group"><label for="menu_pytv_form_channelnumber">Channel number</label><input type="text" id="menu_pytv_form_channelnumber" class="form-control" value="" placeholder="Channel number"/></div></li>
+						<li><button type="submit" class="btn btn-success form-control">Start Tv</button></li>
+					</ul>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-10 col-sm-10 col-lg-10" id="window_preview">
+				<div class="row">
+					<div class="container-fluid" id="window_controls">
+						<div class="borderbar">
+							<div class="row">
+								<div class="col-md-2 col-sm-2 col-lg-2">
+									<h2><span class="glyphicon glyphicon-wrench"></span>&nbsp;Controls</h2>
+								</div>
+								<div class="col-md-4 col-md-offset-3 col-sm-4 col-sm-offset-3 col-lg-4 col-lg-offset-3">
+									<button type="button" class="btn btn-default btn-lg" id="up"><span class="glyphicon glyphicon-chevron-up"></span></button>
+									<input type="text" id="channelnumber" placeholder="Channel Number" />
+									<button type="button" class="btn btn-default btn-lg" id="channel"><span class="glyphicon glyphicon-share"></span></button>
+									<button type="button" class="btn btn-default btn-lg" id="down"><span class="glyphicon glyphicon-chevron-down"></span></button>
+									<button type="button" class="btn btn-default btn-lg" id="pause"><span class="glyphicon glyphicon-pause"></span></button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="container-fluid" id="window_output">
+						<div class="borderbar">
+							<div class="row">
+								<div class="col-md-2 col-sm-2 col-lg-2">
+									<h2><span class="glyphicon glyphicon-pencil"></span>&nbsp;Output</h2>
+								</div>
+								<div class="col-md-1 col-md-offset7 col-sm-1 col-sm-offset-7 col-lg-1 col-lg-offset-7">
+									<button type="button" class="btn btn-default btn-lg" id="trash"><span class="glyphicon glyphicon-trash"></span></button>
+								</div>
+							</div>
+							<div class="container-fluid" id="testoutput"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="eevaa.js"></script>
+<script>eevaa.getDeviceInfo()</script>
+</body>
+</html>

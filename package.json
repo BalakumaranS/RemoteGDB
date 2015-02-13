@@ -1,0 +1,9 @@
+{
+	"name": "eevaa",
+	"description": "End to End Video Audio Automation",
+	"version": "1.2.0",
+	"private": true,
+	"dependencies": {
+		"express": "3.x"
+	}
+}

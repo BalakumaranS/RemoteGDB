@@ -1,0 +1,10 @@
+channel_array=[]
+channel_number=219
+while channel_number>0:
+  digit=channel_number%10
+  print "digit is ", digit
+  channel_number=channel_number/10
+  print "channel number is " ,channel_number
+  channel_array.append(digit)
+  print channel_array
+

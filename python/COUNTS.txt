@@ -1,0 +1,10 @@
+﻿EMM = 11
+ECM = 14
+EMM=25
+ECM=28
+
+
+
+
+C:\EEVAA\public\images\captures
+C:\EEVAA\python

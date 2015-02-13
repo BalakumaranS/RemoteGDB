@@ -1,0 +1,22 @@
+ ###   while channel_array:
+          
+            digit = channel_array.pop()
+            if digit == 0:
+                key=0
+                print key
+            elif digit == 1:
+                key=1
+                print key
+            elif digit == 2:
+                key=2
+                print key
+            elif digit == 4:
+                key=4
+                print key
+            elif digit == 9:
+                key=9
+                print key
+            elif digit == 8:
+                key=8
+                print key ###
+            

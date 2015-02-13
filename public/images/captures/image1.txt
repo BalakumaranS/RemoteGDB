@@ -1,0 +1,11 @@
+Code Down load
+Dawnlnad Status Not Loading
+Downlnad Failure Count 0
+Validation Failure Cnunt 0
+Total Data Blocks 0
+Num ﬂlncks Loaded 0
+Group ID 0x4cb
+Last Image Fﬂeﬂame HDA2—5—0—O177_17D_r5603B_F.p.pkg5img
+Last CVT Time 18 AUG 2014 02:17:23
+Last to return, 7 to exit
+
